@@ -1,4 +1,6 @@
 resource "google_compute_instance" "this" {
+  provider = google-beta
+
   name         = "cloudshell"
   machine_type = "e2-small"
 
