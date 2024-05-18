@@ -1,3 +1,6 @@
+# This will create two firewall based on terraform.tfvars
+# using count.index to loop all the item of var.firewall
+
 resource "google_compute_firewall" "name" {
   count   = length(var.firewall)
   network = google_compute_network.this.id

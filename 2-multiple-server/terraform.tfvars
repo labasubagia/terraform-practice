@@ -2,13 +2,14 @@ project_id  = "project-koko-370310"
 server_name = "foreach"
 network     = "multiple-server-network"
 
+# subnets options
 subnets = {
   south-carolina = { "region" : "us-east1", "ip_cidr_range" : "192.168.2.0/24" },
   iowa           = { "region" : "us-central1", "ip_cidr_range" : "192.168.1.0/24" },
   singapore      = { "region" : "asia-southeast1", "ip_cidr_range" : "192.168.3.0/24" },
 }
 
-
+# firewall options
 firewall = [
   {
     "name" : "allow-all-internal",

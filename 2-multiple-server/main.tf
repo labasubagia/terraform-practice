@@ -12,6 +12,8 @@ resource "google_compute_instance" "this" {
     }
   }
   network_interface {
+    # all 3 instance will use iowa for this example
+    # self link indicate dependencies to other resource
     subnetwork = google_compute_subnetwork.this["iowa"].name
     access_config {
       // Ephemeral public IP
@@ -21,6 +23,8 @@ resource "google_compute_instance" "this" {
 
   tags = ["http-server"]
 
+  # custom things that happend during resource change
+  # for this example, every change in labels will be ignore
   lifecycle {
     ignore_changes = [labels]
   }
