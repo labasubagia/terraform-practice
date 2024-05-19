@@ -29,9 +29,9 @@ resource "google_compute_instance" "this" {
     for_each = var.disks
     content {
       # better way to indicate that this vm is dependent to google_compute_disk.this
-      source = google_compute_disk.this[attached_disk.key].name
       # `attached_disk` is derived from each item of var.disks
-      mode = attached_disk.value["mode"]
+      source = google_compute_disk.this[attached_disk.key].name
+      mode   = attached_disk.value["mode"]
     }
   }
 
