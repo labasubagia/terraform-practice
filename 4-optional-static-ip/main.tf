@@ -17,9 +17,20 @@ resource "google_compute_instance" "this" {
 
   network_interface {
     network = "default"
-    access_config {
-      nat_ip = var.static_ip ? google_compute_address.static[0].address : null
+    # access_config {
+    #   nat_ip = var.static_ip ? google_compute_address.static[0].address : null
+    # }
+
+
+    # There is other way to do it using dynamic
+    # when there is no google_compute_addres.static created this code below will evaluate as null
+    dynamic "access_config" {
+      for_each = google_compute_address.static
+      content {
+        nat_ip = google_compute_address.static[0].address
+      }
     }
+
   }
 }
 
