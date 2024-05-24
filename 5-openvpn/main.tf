@@ -1,7 +1,6 @@
-
 # more sophisticated approach https://github.com/kwisser/create-cloud-compute-engine-ovpn-server
-# this example just put client.opvn inside home/{var.vm_username} dir, download from it
-# finally on local machine (vpn client) run `nmcli connection import type openvpn file <path-to-downloaded>/client.ovpn`
+# this example just put <client_name>.opvn inside home/{var.vm_username}/ dir, download from it
+# finally on local machine (vpn client) run `nmcli connection import type openvpn file <path-to-downloaded>/<client_name>.ovpn`
 
 resource "google_compute_instance" "default" {
   zone         = var.zone
@@ -21,13 +20,21 @@ resource "google_compute_instance" "default" {
   }
 
   metadata_startup_script = <<EOF
-    sudo apt-get update \
-    && mkdir -p /home/${var.vm_username} \
-    && cd /home/${var.vm_username} \
-    && curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh \
-    && chmod +x openvpn-install.sh \
-    && sudo AUTO_INSTALL=y ./openvpn-install.sh \
-    && mv /root/client.ovpn /home/${var.vm_username}
+    sudo apt-get update
+    mkdir -p /home/${var.vm_username}
+    cd /home/${var.vm_username}
+    curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+    chmod +x openvpn-install.sh
+    sudo AUTO_INSTALL=y ./openvpn-install.sh
+
+    # add more client
+    sudo MENU_OPTION="1" CLIENT="client_phone" PASS=1 ./openvpn-install.sh
+    sudo MENU_OPTION="1" CLIENT="client_laptop1" PASS=1 ./openvpn-install.sh
+    sudo MENU_OPTION="1" CLIENT="client_laptop2" PASS=1 ./openvpn-install.sh
+    sudo MENU_OPTION="1" CLIENT="client_other" PASS=1 ./openvpn-install.sh
+
+    # move all client .ovpn
+    mv /root/*.ovpn /home/${var.vm_username}
   EOF
 }
 
