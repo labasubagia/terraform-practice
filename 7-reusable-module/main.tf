@@ -25,3 +25,19 @@ module "server3" {
   machine_type = "e2-small"
   static_ip    = true
 }
+
+
+# use more flexible module
+# e.g more validation, abstraciton, etc
+
+module "server4" {
+  source = "./modules/server_flexible"
+  name   = "${var.server_name}-4"
+}
+
+module "server5" {
+  source       = "./modules/server_flexible"
+  name         = "${var.server_name}-5"
+  machine_type = "large"
+  static_ip    = false
+}
