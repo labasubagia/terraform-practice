@@ -28,3 +28,10 @@ resource "google_storage_bucket_object" "page404" {
   bucket        = google_storage_bucket.static.name
   cache_control = "no-store"
 }
+
+resource "google_storage_bucket_object" "image" {
+  name          = "img/TerraformForGCP.jpg"
+  source        = "../static/img/TerraformForGCP.jpg"
+  bucket        = google_storage_bucket.static.name
+  cache_control = "no-store"
+}
