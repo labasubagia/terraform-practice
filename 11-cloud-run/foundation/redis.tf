@@ -3,8 +3,9 @@ locals {
 }
 
 resource "google_vpc_access_connector" "this" {
-  name   = var.vpc_connector_name
-  region = var.region
+  depends_on = [google_compute_subnetwork.this]
+  name       = var.vpc_connector_name
+  region     = var.region
   subnet {
     name = local.subnet_name
   }

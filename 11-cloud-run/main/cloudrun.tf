@@ -34,8 +34,8 @@ resource "google_cloud_run_service" "redis" {
   template {
     metadata {
       annotations = {
-        "run.googleapis.com/vps-access-connector" = var.vpc_connector_name
-        "run.googleapis.com/vps-access-egress"    = "private-ranges-only"
+        "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
+        "run.googleapis.com/vpc-access-egress"    = "private-ranges-only"
       }
     }
     spec {

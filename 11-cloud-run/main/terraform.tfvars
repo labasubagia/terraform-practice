@@ -3,8 +3,8 @@ network    = "cloudrun"
 region     = "asia-southeast1"
 
 container_images = {
-  "hello" = "gcr.io/terraform-for-gcp/hello"
-  "redis" = "gcr.io/terraform-for-gcp/redis"
+  "hello" = "gcr.io/project-koko-370310/hello"
+  "redis" = "gcr.io/project-koko-370310/redis"
 }
 
 subnets = [
