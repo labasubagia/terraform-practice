@@ -16,6 +16,7 @@ variable "zone" {
 }
 
 variable "network" {
+  description = "network for k8s"
   type = object({
     name                = string
     subnetwork_name     = string
@@ -26,6 +27,7 @@ variable "network" {
 }
 
 variable "gke" {
+  description = "gke settings"
   type = object({
     name     = string
     regional = optional(bool, false)
@@ -34,6 +36,7 @@ variable "gke" {
 }
 
 variable "node_pool" {
+  description = "node pool setting in k8s"
   type = object({
     name               = string
     machine_type       = optional(string, "e2-small")
@@ -45,6 +48,7 @@ variable "node_pool" {
 }
 
 variable "service_account" {
+  description = "service account"
   type = object({
     name  = string
     roles = list(string)
@@ -52,6 +56,7 @@ variable "service_account" {
 }
 
 variable "services" {
-  type    = list(string)
-  default = ["cloudresourcemanager", "compute", "container", "iam", "servicenetworking"]
+  description = "list of services used in this infra"
+  type        = list(string)
+  default     = ["cloudresourcemanager", "compute", "container", "iam", "servicenetworking"]
 }

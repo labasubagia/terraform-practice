@@ -12,8 +12,7 @@ locals {
 }
 
 module "gke" {
-  source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "31.0.0"
+  source = "git::https://github.com/terraform-google-modules/terraform-google-kubernetes-engine.git?ref=355f13eb4415321a94e071dcf8e3deed6e9dc7b0"
 
   project_id = var.project_id
   region     = var.region
@@ -48,4 +47,6 @@ module "gke" {
 
   initial_node_count       = 1
   remove_default_node_pool = true
+
+  deletion_protection = false
 }
