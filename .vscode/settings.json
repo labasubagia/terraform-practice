@@ -5,12 +5,16 @@
     "cSpell.words": [
         "cloudresourcemanager",
         "koko",
+        "ruleset",
         "servicenetworking",
         "subnetwork",
+        "tflint",
         "toset"
     ],
     "editor.formatOnSave": true,
     "terraform.experimentalFeatures.validateOnSave": true,
     "terraform.languageServer.enable": true,
-    "terraform.validation.enableEnhancedValidation": true
+    "terraform.validation.enableEnhancedValidation": true,
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "terraform.codelens.referenceCount": true,
 }

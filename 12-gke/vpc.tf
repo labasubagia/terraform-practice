@@ -1,6 +1,5 @@
 module "vpc" {
-  source     = "terraform-google-modules/network/google"
-  version    = "9.1.0"
+  source     = "git::https://github.com/terraform-google-modules/terraform-google-network.git?ref=4788b5cfac97c464cc7ea84a95a1eccbbaf1cb1a"
   depends_on = [google_project_service.this["compute"]]
 
   project_id   = var.project_id
