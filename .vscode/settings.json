@@ -1,0 +1,16 @@
+{
+    "[terraform]": {
+        "editor.formatOnSave": true
+    },
+    "cSpell.words": [
+        "cloudresourcemanager",
+        "koko",
+        "servicenetworking",
+        "subnetwork",
+        "toset"
+    ],
+    "editor.formatOnSave": true,
+    "terraform.experimentalFeatures.validateOnSave": true,
+    "terraform.languageServer.enable": true,
+    "terraform.validation.enableEnhancedValidation": true
+}
